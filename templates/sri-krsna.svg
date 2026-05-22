@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
-  <!-- Sankirtana Template — Śrī Rādhā -->
+  <!-- Sankirtana Template — Śrī Kṛṣṇa -->
   <!-- Colors: background, circle1 (outer), circle2 (middle), circle3 (inner), srColor, nameColor -->
 
   <!-- Background -->
@@ -21,11 +21,11 @@
     श्री
   </text>
 
-  <!-- rādhā (below, larger) -->
+  <!-- kṛṣṇa (below, larger) -->
   <text x="500" y="560" text-anchor="middle" dominant-baseline="central"
         font-family="Hind, Noto Sans Devanagari, sans-serif"
         font-size="170" fill="{{nameColor}}" font-weight="700">
-    राधा
+    कृष्ण
   </text>
 
 </svg>

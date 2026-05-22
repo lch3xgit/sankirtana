@@ -1,0 +1,14 @@
+{
+  "name": "IPL 2026 — Royal Challengers Bangalore (Krsna)",
+  "event": "ipl-2026-rcb",
+  "template": "krsna",
+  "colors": {
+    "background": "#0D1F2D",
+    "circle1": "#1E3A5F",
+    "circle2": "#F4E04D",
+    "circle3": "#E63946",
+    "srColor": "#FFFFFF",
+    "nameColor": "#FFFFFF"
+  },
+  "platforms": ["square", "instagram", "stories", "pinterest"]
+}
