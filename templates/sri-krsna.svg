@@ -1,31 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
   <!-- Sankirtana Template — Śrī Kṛṣṇa -->
-  <!-- Colors: background, circle1 (outer), circle2 (middle), circle3 (inner), srColor, nameColor -->
+  <!-- Proportions measured from original Google Drawing -->
+  <!-- Colors: bg, circle1 (outer dark blue), circle2 (middle light blue), circle3 (inner yellow), srColor, nameColor -->
 
-  <!-- Background -->
-  <rect width="1000" height="1000" fill="{{background}}"/>
+  <rect width="1000" height="1000" fill="{{bgColor}}"/>
 
-  <!-- Circle 1 (outer, largest) -->
-  <circle cx="500" cy="500" r="450" fill="{{circle1}}"/>
+  <!-- Outer circle — dark blue -->
+  <circle cx="500" cy="500" r="486" fill="{{circle1Color}}"/>
 
-  <!-- Circle 2 (middle) -->
-  <circle cx="500" cy="500" r="320" fill="{{circle2}}"/>
+  <!-- Middle circle — light blue -->
+  <circle cx="500" cy="500" r="387" fill="{{circle2Color}}"/>
 
-  <!-- Circle 3 (inner, text background) -->
-  <circle cx="500" cy="500" r="200" fill="{{circle3}}"/>
+  <!-- Inner circle — yellow -->
+  <circle cx="500" cy="500" r="334" fill="{{circle3Color}}"/>
 
-  <!-- śrī (above, smaller) -->
-  <text x="500" y="415" text-anchor="middle" dominant-baseline="central"
-        font-family="Hind, Noto Sans Devanagari, sans-serif"
-        font-size="88" fill="{{srColor}}" font-weight="700">
-    श्री
-  </text>
+  <!-- Śrī — smaller, above center -->
+  <text x="500" y="345" text-anchor="middle" dominant-baseline="central"
+        font-family="Hind, Noto Sans Devanagari, sans-serif" font-weight="700"
+        font-size="90" fill="{{srColor}}" lang="sa">श्री</text>
 
-  <!-- kṛṣṇa (below, larger) -->
-  <text x="500" y="560" text-anchor="middle" dominant-baseline="central"
-        font-family="Hind, Noto Sans Devanagari, sans-serif"
-        font-size="170" fill="{{nameColor}}" font-weight="700">
-    कृष्ण
-  </text>
-
+  <!-- Kṛṣṇa — large, below center -->
+  <text x="500" y="555" text-anchor="middle" dominant-baseline="central"
+        font-family="Hind, Noto Sans Devanagari, sans-serif" font-weight="700"
+        font-size="200" fill="{{nameColor}}" lang="sa">कृष्ण</text>
 </svg>
