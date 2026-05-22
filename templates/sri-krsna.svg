@@ -1,26 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
   <!-- Sankirtana Template — Śrī Kṛṣṇa -->
-  <!-- Proportions measured from original Google Drawing -->
-  <!-- Colors: bg, circle1 (outer dark blue), circle2 (middle light blue), circle3 (inner yellow), srColor, nameColor -->
+  <!-- v0.3.0 — proportions tuned by hand -->
 
   <rect width="1000" height="1000" fill="{{bgColor}}"/>
 
-  <!-- Outer circle — dark blue -->
+  <!-- Outer circle -->
   <circle cx="500" cy="500" r="486" fill="{{circle1Color}}"/>
 
-  <!-- Middle circle — light blue -->
-  <circle cx="500" cy="500" r="387" fill="{{circle2Color}}"/>
+  <!-- Middle circle -->
+  <circle cx="500" cy="500" r="397" fill="{{circle2Color}}"/>
 
-  <!-- Inner circle — yellow -->
-  <circle cx="500" cy="500" r="334" fill="{{circle3Color}}"/>
+  <!-- Inner circle -->
+  <circle cx="500" cy="500" r="319" fill="{{circle3Color}}"/>
 
-  <!-- Śrī — smaller, above center -->
-  <text x="500" y="345" text-anchor="middle" dominant-baseline="central"
+  <!-- Śrī -->
+  <text x="500" y="384" text-anchor="middle" dominant-baseline="central"
         font-family="Hind, Noto Sans Devanagari, sans-serif" font-weight="700"
-        font-size="90" fill="{{srColor}}" lang="sa">श्री</text>
+        font-size="203" fill="{{srColor}}" lang="sa">श्री</text>
 
-  <!-- Kṛṣṇa — large, below center -->
-  <text x="500" y="555" text-anchor="middle" dominant-baseline="central"
+  <!-- Kṛṣṇa -->
+  <text x="500" y="589" text-anchor="middle" dominant-baseline="central"
         font-family="Hind, Noto Sans Devanagari, sans-serif" font-weight="700"
-        font-size="200" fill="{{nameColor}}" lang="sa">कृष्ण</text>
+        font-size="248" fill="{{nameColor}}" lang="sa">कृष्ण</text>
 </svg>
