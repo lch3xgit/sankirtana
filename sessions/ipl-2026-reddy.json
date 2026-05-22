@@ -1,0 +1,13 @@
+{
+  "name": "IPL 2026 — Debut Team Reddy",
+  "event": "ipl-2026-reddy",
+  "colors": {
+    "background": "#1A0A1A",
+    "circle1": "#5A1A5A",
+    "circle2": "#FFD700",
+    "circle3": "#FF4500",
+    "srColor": "#FFFFFF",
+    "nameColor": "#FFFFFF"
+  },
+  "platforms": ["square", "instagram", "stories", "pinterest"]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "NBA Finals 2026",
+  "event": "nba-finals-2026",
+  "colors": {
+    "background": "#1A1A2E",
+    "circle1": "#0F3460",
+    "circle2": "#E94560",
+    "circle3": "#FFD700",
+    "srColor": "#FFFFFF",
+    "nameColor": "#FFFFFF"
+  },
+  "platforms": ["square", "twitter", "web"]
+}

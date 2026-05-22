@@ -1,0 +1,14 @@
+{
+  "name": "sankirtana",
+  "version": "0.1.0",
+  "description": "Visual sankirtan chakras with configurable color themes",
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "serve": "npx serve ."
+  },
+  "dependencies": {
+    "sharp": "^0.33.5",
+    "playwright": "^1.49.0"
+  }
+}
