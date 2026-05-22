@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sankirtana — Śrī Kṛṣṇa Playground</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #111;
+    color: #eee;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  h1 { font-size: 20px; color: #FFD700; margin-bottom: 8px; }
+  .subtitle { color: #888; font-size: 13px; margin-bottom: 16px; }
+  .main { display: flex; gap: 24px; flex-wrap: wrap; }
+
+  .preview {
+    flex: 0 0 500px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 16px;
+  }
+  #svg-container {
+    width: 100%;
+    background: #222;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  #svg-container svg { width: 100%; height: auto; display: block; }
+
+  .controls {
+    flex: 1;
+    min-width: 300px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 16px;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  .group { margin-bottom: 20px; }
+  .group-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .row label { width: 80px; font-size: 13px; color: #ccc; }
+  .row input[type="range"] { flex: 1; }
+  .row .value { width: 60px; text-align: right; font-family: monospace; font-size: 13px; color: #FFD700; }
+  .row input[type="color"] { width: 40px; height: 30px; border: none; cursor: pointer; padding: 0; background: transparent; }
+  .row .hex { font-family: monospace; font-size: 13px; color: #ccc; min-width: 80px; }
+
+  .btn {
+    background: #FFD700;
+    color: #111;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+    margin-right: 8px;
+  }
+  .btn.secondary { background: #333; color: #eee; }
+  .btn:hover { opacity: 0.9; }
+
+  textarea {
+    width: 100%;
+    background: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 8px;
+    color: #FFD700;
+    font-family: monospace;
+    font-size: 12px;
+    margin-top: 8px;
+    resize: vertical;
+  }
+  .switch-link { color: #FFD700; text-decoration: none; font-size: 13px; }
+  .switch-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<h1>🎨 Sankirtana — Śrī Kṛṣṇa</h1>
+<p class="subtitle">Tuned proportions — <a href="playground-radhe.html" class="switch-link">← Switch to Rādhā</a></p>
+<div class="main">
+  <div class="preview">
+    <div class="group-label">Live Preview</div>
+    <div id="svg-container"></div>
+  </div>
+
+  <div class="controls">
+    <div class="group">
+      <div class="group-label">Circles (radii)</div>
+      <div class="row">
+        <label>Outer r</label>
+        <input type="range" id="r1" min="100" max="500" value="486">
+        <span class="value" id="v-r1">486</span>
+      </div>
+      <div class="row">
+        <label>Middle r</label>
+        <input type="range" id="r2" min="50" max="450" value="397">
+        <span class="value" id="v-r2">397</span>
+      </div>
+      <div class="row">
+        <label>Inner r</label>
+        <input type="range" id="r3" min="20" max="400" value="319">
+        <span class="value" id="v-r3">319</span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-label">Text Position & Size</div>
+      <div class="row">
+        <label>Śrī y</label>
+        <input type="range" id="sri-y" min="50" max="500" value="384">
+        <span class="value" id="v-sri-y">384</span>
+      </div>
+      <div class="row">
+        <label>Śrī size</label>
+        <input type="range" id="sri-size" min="20" max="300" value="203">
+        <span class="value" id="v-sri-size">203</span>
+      </div>
+      <div class="row">
+        <label>Name y</label>
+        <input type="range" id="name-y" min="300" max="700" value="589">
+        <span class="value" id="v-name-y">589</span>
+      </div>
+      <div class="row">
+        <label>Name size</label>
+        <input type="range" id="name-size" min="50" max="400" value="248">
+        <span class="value" id="v-name-size">248</span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-label">Colors</div>
+      <div class="row">
+        <label>Outer</label>
+        <input type="color" id="color1" value="#0A1F44">
+        <span class="hex" id="h-color1">#0A1F44</span>
+      </div>
+      <div class="row">
+        <label>Middle</label>
+        <input type="color" id="color2" value="#87CEFA">
+        <span class="hex" id="h-color2">#87CEFA</span>
+      </div>
+      <div class="row">
+        <label>Inner</label>
+        <input type="color" id="color3" value="#FFD700">
+        <span class="hex" id="h-color3">#FFD700</span>
+      </div>
+      <div class="row">
+        <label>Text</label>
+        <input type="color" id="color-text" value="#FF4433">
+        <span class="hex" id="h-color-text">#FF4433</span>
+      </div>
+      <div class="row">
+        <label>Bg</label>
+        <input type="color" id="color-bg" value="#FFFFFF">
+        <span class="hex" id="h-color-bg">#FFFFFF</span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-label">Actions</div>
+      <button class="btn" onclick="resetDefaults()">Reset to Original</button>
+      <button class="btn secondary" onclick="exportSVG()">Export SVG</button>
+    </div>
+
+    <div class="group">
+      <div class="group-label">Current SVG</div>
+      <textarea id="template-code" rows="16" spellcheck="false"></textarea>
+    </div>
+  </div>
+</div>
+
+<script>
+const defaults = {
+  r1: 486, r2: 397, r3: 319,
+  sriY: 384, sriSize: 203,
+  nameY: 589, nameSize: 248,
+  c1: '#0A1F44', c2: '#87CEFA', c3: '#FFD700',
+  text: '#FF4433', bg: '#FFFFFF'
+};
+
+function getParams() {
+  return {
+    r1: +document.getElementById('r1').value,
+    r2: +document.getElementById('r2').value,
+    r3: +document.getElementById('r3').value,
+    sriY: +document.getElementById('sri-y').value,
+    sriSize: +document.getElementById('sri-size').value,
+    nameY: +document.getElementById('name-y').value,
+    nameSize: +document.getElementById('name-size').value,
+    c1: document.getElementById('color1').value,
+    c2: document.getElementById('color2').value,
+    c3: document.getElementById('color3').value,
+    text: document.getElementById('color-text').value,
+    bg: document.getElementById('color-bg').value
+  };
+}
+
+function buildSVG(p) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <rect width="1000" height="1000" fill="${p.bg}"/>
+  <circle cx="500" cy="500" r="${p.r1}" fill="${p.c1}"/>
+  <circle cx="500" cy="500" r="${p.r2}" fill="${p.c2}"/>
+  <circle cx="500" cy="500" r="${p.r3}" fill="${p.c3}"/>
+  <text x="500" y="${p.sriY}" text-anchor="middle" dominant-baseline="central"
+        font-family="Hind, Noto Sans Devanagari, sans-serif" font-weight="700"
+        font-size="${p.sriSize}" fill="${p.text}" lang="sa">श्री</text>
+  <text x="500" y="${p.nameY}" text-anchor="middle" dominant-baseline="central"
+        font-family="Hind, Noto Sans Devanagari, sans-serif" font-weight="700"
+        font-size="${p.nameSize}" fill="${p.text}" lang="sa">कृष्ण</text>
+</svg>`;
+}
+
+function render() {
+  const p = getParams();
+  const svg = buildSVG(p);
+  document.getElementById('svg-container').innerHTML = svg;
+  document.getElementById('template-code').value = svg;
+
+  ['r1','r2','r3','sri-y','sri-size','name-y','name-size'].forEach(id => {
+    document.getElementById('v-' + id).textContent = document.getElementById(id).value;
+  });
+  ['color1','color2','color3','color-text','color-bg'].forEach(id => {
+    const hexId = 'h-' + id;
+    if(document.getElementById(hexId)) {
+      document.getElementById(hexId).textContent = document.getElementById(id).value;
+    }
+  });
+}
+
+function resetDefaults() {
+  document.getElementById('r1').value = defaults.r1;
+  document.getElementById('r2').value = defaults.r2;
+  document.getElementById('r3').value = defaults.r3;
+  document.getElementById('sri-y').value = defaults.sriY;
+  document.getElementById('sri-size').value = defaults.sriSize;
+  document.getElementById('name-y').value = defaults.nameY;
+  document.getElementById('name-size').value = defaults.nameSize;
+  document.getElementById('color1').value = defaults.c1;
+  document.getElementById('color2').value = defaults.c2;
+  document.getElementById('color3').value = defaults.c3;
+  document.getElementById('color-text').value = defaults.text;
+  document.getElementById('color-bg').value = defaults.bg;
+  render();
+}
+
+function exportSVG() {
+  const p = getParams();
+  const svg = buildSVG(p);
+  const blob = new Blob([svg], { type: 'image/svg+xml' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'sankirtana-krsna.svg';
+  document.body.appendChild(a);
+  a.click();
+  URL.revokeObjectURL(url);
+  document.body.removeChild(a);
+}
+
+document.querySelectorAll('input').forEach(input => {
+  input.addEventListener('input', render);
+});
+
+render();
+</script>
+</body>
+</html>
