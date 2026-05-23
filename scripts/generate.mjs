@@ -5,19 +5,24 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 
-// Load session config
+const FORMATS = {
+  square: { label: '1:1 Square', w: 1080, h: 1080 },
+  story:  { label: '9:16 Story', w: 1080, h: 1920 },
+  wide:   { label: '16:9 Wide',  w: 1920, h: 1080 },
+  pin:    { label: '2:3 Pin',    w: 1000, h: 1500 },
+};
+
 const configPath = process.argv[2] || path.join(ROOT, 'sessions', 'ipl-2026-rcb.json');
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const colors = config.colors;
 const event = config.event || 'untitled';
-const variant = config.template || 'radhe'; // radhe | krsna
+const variant = config.template || 'radhe';
 
-// Load template
 const templateFile = variant === 'krsna' ? 'sri-krsna.svg' : 'sri-radhe.svg';
-const template = fs.readFileSync(path.join(ROOT, 'templates', templateFile), 'utf8');
+let template = fs.readFileSync(path.join(ROOT, 'templates', templateFile), 'utf8');
 
-// Colorize template — replace {{placeholder}} with hex values
-function colorize(tmpl, colors) {
+// Replace placeholders with actual colors from the session JSON
+function applyColors(tmpl) {
   return tmpl
     .replace(/\{\{bgColor\}\}/g, colors.background)
     .replace(/\{\{circle1Color\}\}/g, colors.circle1)
@@ -27,13 +32,49 @@ function colorize(tmpl, colors) {
     .replace(/\{\{nameColor\}\}/g, colors.nameColor);
 }
 
-// Generate square SVG (1000×1000 base)
+const coloredTemplate = applyColors(template);
+
 const outputDir = path.join(ROOT, 'output');
 fs.mkdirSync(outputDir, { recursive: true });
 
-const svg = colorize(template, colors);
-const outFile = path.join(outputDir, `${event}-${variant}-square.svg`);
-fs.writeFileSync(outFile, svg);
-console.log(`Generated: output/${event}-${variant}-square.svg`);
+// Extract just the inner content (circles + text) without the outer SVG wrapper
+const innerMatch = coloredTemplate.match(/<svg[^>]*>([\s\S]*?)<\/svg>/);
+let rawContent = '';
+if (innerMatch) {
+  rawContent = innerMatch[1];
+  // Strip XML declaration if present
+  rawContent = rawContent.replace(/<\?xml[^>]*\?>/g, '');
+  // Strip the background rect (we'll add our own per format)
+  // Use line-by-line filtering to avoid regex complexity
+  rawContent = rawContent.split('\n')
+    .filter(line => !line.trim().startsWith('<rect width="1000"'))
+    .join('\n')
+    .trim();
+} else {
+  rawContent = coloredTemplate; // fallback
+}
 
-console.log(`\nDone! Run: python3 scripts/render.py output/${event}-${variant}-square.svg`);
+for (const [key, fmt] of Object.entries(FORMATS)) {
+  const offsetX = (fmt.w - 1000) / 2;
+  const offsetY = (fmt.h - 1000) / 2;
+
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${fmt.w} ${fmt.h}" width="${fmt.w}" height="${fmt.h}">\n`;
+  svg += `  <rect width="${fmt.w}" height="${fmt.h}" fill="${colors.background}"/>\n`;
+  svg += `  <g transform="translate(${offsetX}, ${offsetY})">\n`;
+
+  for (const line of rawContent.split('\n')) {
+    if (line.trim()) {
+      svg += `    ${line.trim()}\n`;
+    }
+  }
+
+  svg += `  </g>\n`;
+  svg += `</svg>`;
+
+  const outFile = path.join(outputDir, `${event}-${variant}-${key}.svg`);
+  fs.writeFileSync(outFile, svg);
+  console.log(`Generated: ${outFile}`);
+}
+
+console.log(`\nDone! Render with: python3 scripts/render.py output/${event}-<variant>-<format>.svg <out.png>`);
+console.log(`Supported formats: ${Object.keys(FORMATS).join(', ')}`);
