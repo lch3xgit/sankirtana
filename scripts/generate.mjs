@@ -55,12 +55,15 @@ if (innerMatch) {
 }
 
 for (const [key, fmt] of Object.entries(FORMATS)) {
+  const shortestDim = Math.min(fmt.w, fmt.h);
+  const targetCircleSize = shortestDim * 0.80;
+  const scale = targetCircleSize / 972;
   const offsetX = (fmt.w - 1000) / 2;
   const offsetY = (fmt.h - 1000) / 2;
 
   let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${fmt.w} ${fmt.h}" width="${fmt.w}" height="${fmt.h}">\n`;
   svg += `  <rect width="${fmt.w}" height="${fmt.h}" fill="${colors.background}"/>\n`;
-  svg += `  <g transform="translate(${offsetX}, ${offsetY})">\n`;
+  svg += `  <g transform="translate(${offsetX}, ${offsetY}) scale(${scale})">\n`;
 
   for (const line of rawContent.split('\n')) {
     if (line.trim()) {
