@@ -10,10 +10,11 @@ const configPath = process.argv[2] || path.join(ROOT, 'sessions', 'ipl-2026-rcb.
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const colors = config.colors;
 const event = config.event || 'untitled';
-const variant = config.template || 'radhe'; // radhe | krsna
+const rawVariant = config.template || 'radha';
+const variant = rawVariant === 'radhe' ? 'radha' : rawVariant; // radha | krsna
 
 // Load template
-const templateFile = variant === 'krsna' ? 'sri-krsna.svg' : 'sri-radhe.svg';
+const templateFile = variant === 'krsna' ? 'sri-krsna.svg' : 'sri-radha.svg';
 const template = fs.readFileSync(path.join(ROOT, 'templates', templateFile), 'utf8');
 
 // Colorize template — replace {{placeholder}} with hex values

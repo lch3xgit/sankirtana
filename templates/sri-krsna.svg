@@ -14,12 +14,12 @@
   <circle cx="500" cy="500" r="319" fill="{{circle3Color}}"/>
 
   <!-- Śrī -->
-  <text x="500" y="384" text-anchor="middle" dominant-baseline="central"
+  <text x="500" y="370" text-anchor="middle" dominant-baseline="central"
         font-family="Hind, Noto Sans Devanagari, sans-serif" font-weight="700"
-        font-size="203" fill="{{srColor}}" lang="sa">श्री</text>
+        font-size="170" fill="{{srColor}}" lang="sa">श्री</text>
 
   <!-- Kṛṣṇa -->
-  <text x="500" y="589" text-anchor="middle" dominant-baseline="central"
+  <text x="500" y="570" text-anchor="middle" dominant-baseline="central"
         font-family="Hind, Noto Sans Devanagari, sans-serif" font-weight="700"
-        font-size="248" fill="{{nameColor}}" lang="sa">कृष्ण</text>
+        font-size="270" fill="{{nameColor}}" lang="sa">कृष्ण</text>
 </svg>

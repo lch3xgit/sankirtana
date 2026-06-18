@@ -1,11 +1,13 @@
 {
   "name": "sankirtana",
   "version": "0.1.0",
-  "description": "Visual sankirtan chakras with configurable color themes",
+  "description": "Static sacred-name graphic generator for Sri Radha and Sri Krsna",
   "type": "module",
   "scripts": {
     "generate": "node scripts/generate.mjs",
-    "serve": "npx serve ."
+    "render": "node scripts/render.mjs",
+    "batch-render": "node scripts/batch-render.mjs",
+    "serve": "node scripts/serve.mjs"
   },
   "dependencies": {
     "sharp": "^0.33.5",

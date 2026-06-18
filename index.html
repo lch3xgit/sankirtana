@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sri Radha Digital Visual Sankirtana</title>
+  <meta name="description" content="Render sacred-name graphics for digital sharing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <main class="terminal-shell">
+    <div class="terminal-frame">
+      <div class="terminal-scroll">
+        <div class="terminal-screen">
+      <header class="devotional-header">
+        <div class="header-mark header-mark-radha" id="header-radha" aria-hidden="true"></div>
+        <div class="header-title-block">
+<pre class="ascii-title" aria-hidden="true">
+░▒█▀▀▀▄ ░▒█▀▀▀▄ ░▒█▀▀▀▄ ░▒█░░▒█ ░▒█▀▀▀▀
+░▒█▄▄▄▀ ░▒█▄▄▄█ ░▒█░░▒█ ░▒█▀▀▀█ ░▒█▀▀▀▀
+░▒█░░▒█ ░▒█░░▒█ ░▒█▄▄▄█ ░▒█░░▒█ ░▒█▄▄▄▄
+
+░▒█▀▀▀▄ ░▒█▀▀▀▄ ░▒█▀▀▀▄ ░▒█░░▒█ ░▒█▀▀▀▀
+░▒█▄▄▄▀ ░▒█▄▄▄█ ░▒█░░▒█ ░▒█▀▀▀█ ░▒█▀▀▀▀
+░▒█░░▒█ ░▒█░░▒█ ░▒█▄▄▄█ ░▒█░░▒█ ░▒█▄▄▄▄</pre>
+
+          <div class="header-subtitle">JAYA ŚRĪ RĀDHE</div>
+        </div>
+        <div class="header-mark header-mark-krsna" id="header-krsna" aria-hidden="true"></div>
+      </header>
+
+    <div class="terminal-row"></div>
+    <div class="terminal-row">:: [system] sri_radha_visual_sankirtana initialized</div>
+    <div class="terminal-row">:: [mode] fixed sacred geometry / editable color render</div>
+    <div class="terminal-row">:: [mission] Render sacred-name graphics for digital sharing.</div>
+    <p class="terminal-copy">
+      Inspired by the beautiful holy-name decorations seen throughout the sacred dhams of Vrindavan and Mayapur, this simple tool creates shareable Sri Radha and Sri Krsna graphics using fixed devotional templates and customizable colors.
+    </p>
+
+    <div class="terminal-row"></div>
+    <div class="terminal-row separator">============================================================</div>
+    <div class="terminal-row"></div>
+
+    <section class="terminal-section" aria-labelledby="generator-heading">
+      <div class="terminal-row status-row">
+        <h2 id="generator-heading">:: [generator]</h2>
+        <span id="status-line">[loading]</span>
+      </div>
+
+      <div class="generator-grid">
+        <form class="terminal-panel generator-controls">
+          <label class="control-row">
+            <span>name ............</span>
+            <select id="template-select" name="template">
+              <option value="radha">Sri Radha</option>
+              <option value="krsna">Sri Krsna</option>
+            </select>
+          </label>
+
+          <label class="control-row">
+            <span>preset ..........</span>
+            <select id="preset-select" name="preset"></select>
+          </label>
+
+          <label class="control-row">
+            <span>effect ..........</span>
+            <select id="effect-select" name="effect"></select>
+          </label>
+
+          <label class="control-row">
+            <span>size ............</span>
+            <select id="size-select" name="size"></select>
+          </label>
+
+          <div class="terminal-row"></div>
+          <div class="color-controls" id="color-controls"></div>
+          <div class="terminal-row"></div>
+
+          <button class="terminal-button" type="button" id="download-png">[render_png]</button>
+        </form>
+
+        <aside class="terminal-panel preview-panel" aria-label="Generated preview">
+          <div class="terminal-row preview-topline">
+            <span id="preview-label">Sri Radha</span>
+            <span id="size-readout">1080 x 1080</span>
+          </div>
+          <div class="graphic-stage preview-stage" id="generator-preview"></div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="terminal-row"></div>
+    <div class="terminal-row separator">============================================================</div>
+    <div class="terminal-row"></div>
+
+    <footer class="terminal-row footer">:: [footer] fixed sacred-name templates / static site / no backend</footer>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

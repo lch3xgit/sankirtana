@@ -1,0 +1,14 @@
+{
+  "id": "original-radha",
+  "name": "Radha Original",
+  "template": "radha",
+  "colors": {
+    "background": "#FFFFFF",
+    "circle1": "#0A1F44",
+    "circle2": "#87CEFA",
+    "circle3": "#FFD700",
+    "srColor": "#FF4433",
+    "nameColor": "#FF4433",
+    "auraColor": "#FFD700"
+  }
+}
