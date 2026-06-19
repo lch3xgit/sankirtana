@@ -362,10 +362,11 @@ code {
   .devotional-header {
     display: grid;
     grid-template-areas:
-      "title title"
-      "radha krsna";
-    grid-template-columns: repeat(2, var(--header-mark-size));
+      "title"
+      "radha";
+    grid-template-columns: minmax(0, 1fr);
     justify-content: center;
+    justify-items: center;
   }
 
   .header-title-block {
@@ -373,12 +374,17 @@ code {
     min-width: 0;
   }
 
+  .header-mark {
+    width: min(70vw, var(--header-mark-size));
+    height: min(70vw, var(--header-mark-size));
+  }
+
   .header-mark-radha {
     grid-area: radha;
   }
 
   .header-mark-krsna {
-    grid-area: krsna;
+    display: none;
   }
 }
 
